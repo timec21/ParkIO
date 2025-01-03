@@ -1,18 +1,44 @@
-import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, StyleSheet, Alert } from 'react-native';
 import { Text, Button, Divider, Avatar } from 'react-native-paper';
+import { useAuth } from '../../AuthContext';
 
 const ProfileScreen = () => {
-  const userInfo = {
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-    profilePicture: 'https://i.pravatar.cc/300',
+  const { authState, onLogout, fetchUser } = useAuth();
+  const [userInfo, setUserInfo] = useState<any>(null);
+
+  useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        const userData = await fetchUser?.();
+        if (userData) {
+          setUserInfo(userData);
+        } else {
+          console.error('Failed to fetch user data');
+        }
+      } catch (error) {
+        console.error('Error during fetchUser call:', error);
+      }
+    };
+    loadUserData();
+  }, []);
+
+  const handleLogout = async () => {
+    await onLogout?.();
+    Alert.alert('Logout', 'You have successfully logged out.');
   };
+
+  if (!userInfo) {
+    return (
+      <View style={styles.loading}>
+        <Text style={{ color: '#FFFFFF' }}>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
-      {/* Profil Başlığı */}
-      <View style={styles.header}>
+        <View style={styles.header}>
         <Avatar.Image size={100} source={{ uri: userInfo.profilePicture }} style={styles.avatar} />
         <Text style={styles.name}>{userInfo.name}</Text>
         <Text style={styles.email}>{userInfo.email}</Text>
@@ -20,31 +46,27 @@ const ProfileScreen = () => {
 
       <Divider style={styles.divider} />
 
-      {/* Aksiyonlar */}
       <View style={styles.actions}>
         <Button
           mode="contained"
           style={styles.actionButton}
-          labelStyle={styles.actionButtonLabel}
-          onPress={() => console.log('Profili Düzenle')}
+          onPress={() => console.log('Edit Profile')}
         >
-          Profili Düzenle
+          Edit Profile
         </Button>
         <Button
           mode="outlined"
           style={styles.actionButtonOutlined}
-          labelStyle={styles.actionButtonOutlinedLabel}
-          onPress={() => console.log('Şifreyi Güncelle')}
+          onPress={() => console.log('Update Password')}
         >
-          Şifreyi Güncelle
+          Update Password
         </Button>
         <Button
           mode="text"
           style={styles.actionButtonText}
-          labelStyle={styles.actionButtonTextLabel}
-          onPress={() => console.log('Çıkış Yapıldı')}
+          onPress={handleLogout}
         >
-          Çıkış Yap
+          Logout
         </Button>
       </View>
     </View>
@@ -53,6 +75,7 @@ const ProfileScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 50,
     flex: 1,
     backgroundColor: '#202124',
     padding: 16,
@@ -87,27 +110,20 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 16,
   },
-  actionButtonLabel: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#202124',
-  },
   actionButtonOutlined: {
     borderColor: '#EA80FC',
     borderWidth: 1,
     borderRadius: 8,
     marginBottom: 16,
   },
-  actionButtonOutlinedLabel: {
-    fontSize: 16,
-    color: '#EA80FC',
-  },
   actionButtonText: {
     alignSelf: 'center',
   },
-  actionButtonTextLabel: {
-    fontSize: 16,
-    color: '#EA80FC',
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#202124',
   },
 });
 
