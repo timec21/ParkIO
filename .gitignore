@@ -17,6 +17,15 @@ expo-env.d.ts
 *.key
 *.mobileprovision
 
+# Ignore APK and build outputs
+android/app/build/
+android/app/build/intermediates/
+android/app/build/outputs/
+android/app/build/intermediates/cxx/
+*.apk
+*.so
+*.o
+
 # Metro
 .metro-health-check*
 
@@ -34,3 +43,13 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# Android Gradle Wrapper
+android/gradle/wrapper/gradle-wrapper.jar
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
