@@ -12,12 +12,12 @@ import axios from 'axios';
 
 interface Park {
   id: string;
-  name: string;       // Parkın ismi (ör. fullName)
-  image: string;      // Tek bir resim (ör. images[0]?.url)
-  latitude: number;   // Koordinat
-  longitude: number;  // Koordinat
-  feature1: string;   // Örnek özellik 1
-  feature2: string;   // Örnek özellik 2
+  name: string;       
+  image: string;      
+  latitude: number;   
+  longitude: number;  
+  feature1: string;   
+  feature2: string;   
 }
 
 const MapScreen: React.FC = () => {
@@ -29,15 +29,13 @@ const MapScreen: React.FC = () => {
       try {
         const response = await axios.get('https://developer.nps.gov/api/v1/parks', {
           params: {
-            limit: '30', // Kaç sonuç çekmek istediğini buradan belirle
-            api_key: '6ON0aNJYGfGuGjhoMwGUzg80gXg95gmpzBjAXGHr', // Kendi API key'in
+            limit: '30', 
+            api_key: '6ON0aNJYGfGuGjhoMwGUzg80gXg95gmpzBjAXGHr', 
           },
         });
 
-        // Gelen yanıt içindeki "data" dizisini al
         const rawData = response.data.data || [];
 
-        // Gelen datayı filtrele, sadece istediğin alanları çek
         const filteredParks: Park[] = rawData
           .map((parkItem: any) => {
             // latLong: "lat:37.5858662, long:-85.67330523"
