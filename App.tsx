@@ -23,7 +23,6 @@ export default function App() {
       Alert.alert('Bağlantı Kesildi', 'Lütfen internet bağlantınızı kontrol edin.');
     } else if (isConnected) {
       syncData();
-      Alert.alert('bağlantı geri geldi.')
     }
   }, [isConnected]);
   return (

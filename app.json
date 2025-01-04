@@ -15,7 +15,6 @@
     "ios": {
       "supportsTablet": true
     },
-    
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -26,14 +25,10 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      [
-        "expo-google-places",
-        {
-          "androidApiKey": "AIzaSyCPcjwoYzCmtSBzIkF6UYIiw6QP6ei2NRQ"
-        }
-      ],
-      "expo-google-places"
-    ]
+    "extra": {
+      "eas": {
+        "projectId": "aeac82af-9f0c-459c-b785-eaea709b8cc7"
+      }
+    }
   }
 }
