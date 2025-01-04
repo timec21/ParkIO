@@ -2,9 +2,9 @@
   "enabled": true,
   "prefabPath": "C:\\Users\\forso\\.gradle\\caches\\modules-2\\files-2.1\\com.google.prefab\\cli\\2.1.0\\aa32fec809c44fa531f01dcfb739b5b3304d3050\\cli-2.1.0-all.jar",
   "packages": [
-    "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\2d3383677a20abf09e73ba3033a9c3f2\\transformed\\react-android-0.76.5-debug\\prefab",
+    "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\09e99889bdbc3a72b28a5d49d1ebcf4c\\transformed\\react-android-0.76.5-debug\\prefab",
     "C:\\Users\\forso\\Project\\TestIO\\node_modules\\react-native-reanimated\\android\\build\\intermediates\\prefab_package\\debug\\prefab",
-    "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\a720970af5acf5a01727910f6017272f\\transformed\\hermes-android-0.76.5-debug\\prefab",
-    "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\5eafb776107853e45c4ec8a0eea020f9\\transformed\\fbjni-0.6.0\\prefab"
+    "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\b54a83068d5c3d9ce86958288d020f29\\transformed\\hermes-android-0.76.5-debug\\prefab",
+    "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\d31f451122629a882eaa4d4e39fe5824\\transformed\\fbjni-0.6.0\\prefab"
   ]
 }

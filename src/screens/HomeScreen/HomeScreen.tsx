@@ -34,11 +34,13 @@ const HomeScreen = ({ navigation }: any) => {
         />
         <Card.Cover source={{ uri: item.image }} style={styles.cardCover} />
         <Card.Actions>
-          <Button style={styles.btn} labelStyle={{color:'#fff'}}
-            onPress={() => navigation.navigate('Details', { parkId: item.id })}
-          >
-            İncele
-          </Button>
+        <Button
+          style={styles.btn}
+          labelStyle={{ color: '#fff' }}
+          onPress={() => navigation.navigate('Details', { parkId: item.id })}
+        >
+          İncele
+        </Button>
         </Card.Actions>
       </Card>
     );

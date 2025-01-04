@@ -1,7 +1,5 @@
 {
   "buildFiles": [
-    "C:\\Users\\forso\\Project\\TestIO\\node_modules\\@react-native-async-storage\\async-storage\\android\\build\\generated\\source\\codegen\\jni\\CMakeLists.txt",
-    "C:\\Users\\forso\\Project\\TestIO\\node_modules\\@react-native-google-signin\\google-signin\\android\\build\\generated\\source\\codegen\\jni\\CMakeLists.txt",
     "C:\\Users\\forso\\Project\\TestIO\\node_modules\\react-native-gesture-handler\\android\\build\\generated\\source\\codegen\\jni\\CMakeLists.txt",
     "C:\\Users\\forso\\Project\\TestIO\\node_modules\\react-native-reanimated\\android\\build\\generated\\source\\codegen\\jni\\CMakeLists.txt",
     "C:\\Users\\forso\\Project\\TestIO\\node_modules\\react-native-safe-area-context\\android\\src\\main\\jni\\CMakeLists.txt",
@@ -40,9 +38,9 @@
       "abi": "arm64-v8a",
       "output": "C:\\Users\\forso\\Project\\TestIO\\android\\app\\build\\intermediates\\cxx\\Debug\\6c5t3g40\\obj\\arm64-v8a\\libreact_codegen_safeareacontext.so",
       "runtimeFiles": [
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\5eafb776107853e45c4ec8a0eea020f9\\transformed\\fbjni-0.6.0\\prefab\\modules\\fbjni\\libs\\android.arm64-v8a\\libfbjni.so",
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\2d3383677a20abf09e73ba3033a9c3f2\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\jsi\\libs\\android.arm64-v8a\\libjsi.so",
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\2d3383677a20abf09e73ba3033a9c3f2\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\reactnative\\libs\\android.arm64-v8a\\libreactnative.so"
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\d31f451122629a882eaa4d4e39fe5824\\transformed\\fbjni-0.6.0\\prefab\\modules\\fbjni\\libs\\android.arm64-v8a\\libfbjni.so",
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\09e99889bdbc3a72b28a5d49d1ebcf4c\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\jsi\\libs\\android.arm64-v8a\\libjsi.so",
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\09e99889bdbc3a72b28a5d49d1ebcf4c\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\reactnative\\libs\\android.arm64-v8a\\libreactnative.so"
       ]
     },
     "react_codegen_rngesturehandler_codegen::@39f233abcd2c728bc6ec": {
@@ -55,9 +53,9 @@
       "abi": "arm64-v8a",
       "output": "C:\\Users\\forso\\Project\\TestIO\\android\\app\\build\\intermediates\\cxx\\Debug\\6c5t3g40\\obj\\arm64-v8a\\libreact_codegen_rnscreens.so",
       "runtimeFiles": [
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\2d3383677a20abf09e73ba3033a9c3f2\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\reactnative\\libs\\android.arm64-v8a\\libreactnative.so",
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\2d3383677a20abf09e73ba3033a9c3f2\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\jsi\\libs\\android.arm64-v8a\\libjsi.so",
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\5eafb776107853e45c4ec8a0eea020f9\\transformed\\fbjni-0.6.0\\prefab\\modules\\fbjni\\libs\\android.arm64-v8a\\libfbjni.so"
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\09e99889bdbc3a72b28a5d49d1ebcf4c\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\reactnative\\libs\\android.arm64-v8a\\libreactnative.so",
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\09e99889bdbc3a72b28a5d49d1ebcf4c\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\jsi\\libs\\android.arm64-v8a\\libjsi.so",
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\d31f451122629a882eaa4d4e39fe5824\\transformed\\fbjni-0.6.0\\prefab\\modules\\fbjni\\libs\\android.arm64-v8a\\libfbjni.so"
       ]
     },
     "appmodules::@6890427a1f51a3e7e1df": {
@@ -68,9 +66,9 @@
         "C:\\Users\\forso\\Project\\TestIO\\android\\app\\build\\intermediates\\cxx\\Debug\\6c5t3g40\\obj\\arm64-v8a\\libreact_codegen_safeareacontext.so",
         "C:\\Users\\forso\\Project\\TestIO\\android\\app\\build\\intermediates\\cxx\\Debug\\6c5t3g40\\obj\\arm64-v8a\\libreact_codegen_rnscreens.so",
         "C:\\Users\\forso\\Project\\TestIO\\android\\app\\build\\intermediates\\cxx\\Debug\\6c5t3g40\\obj\\arm64-v8a\\libreact_codegen_rnsvg.so",
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\5eafb776107853e45c4ec8a0eea020f9\\transformed\\fbjni-0.6.0\\prefab\\modules\\fbjni\\libs\\android.arm64-v8a\\libfbjni.so",
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\2d3383677a20abf09e73ba3033a9c3f2\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\jsi\\libs\\android.arm64-v8a\\libjsi.so",
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\2d3383677a20abf09e73ba3033a9c3f2\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\reactnative\\libs\\android.arm64-v8a\\libreactnative.so"
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\d31f451122629a882eaa4d4e39fe5824\\transformed\\fbjni-0.6.0\\prefab\\modules\\fbjni\\libs\\android.arm64-v8a\\libfbjni.so",
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\09e99889bdbc3a72b28a5d49d1ebcf4c\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\jsi\\libs\\android.arm64-v8a\\libjsi.so",
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\09e99889bdbc3a72b28a5d49d1ebcf4c\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\reactnative\\libs\\android.arm64-v8a\\libreactnative.so"
       ]
     },
     "react_codegen_rnsvg::@4f40eb209d0c0b4a3b65": {
@@ -78,20 +76,10 @@
       "abi": "arm64-v8a",
       "output": "C:\\Users\\forso\\Project\\TestIO\\android\\app\\build\\intermediates\\cxx\\Debug\\6c5t3g40\\obj\\arm64-v8a\\libreact_codegen_rnsvg.so",
       "runtimeFiles": [
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\2d3383677a20abf09e73ba3033a9c3f2\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\reactnative\\libs\\android.arm64-v8a\\libreactnative.so",
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\2d3383677a20abf09e73ba3033a9c3f2\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\jsi\\libs\\android.arm64-v8a\\libjsi.so",
-        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\5eafb776107853e45c4ec8a0eea020f9\\transformed\\fbjni-0.6.0\\prefab\\modules\\fbjni\\libs\\android.arm64-v8a\\libfbjni.so"
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\09e99889bdbc3a72b28a5d49d1ebcf4c\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\reactnative\\libs\\android.arm64-v8a\\libreactnative.so",
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\09e99889bdbc3a72b28a5d49d1ebcf4c\\transformed\\react-android-0.76.5-debug\\prefab\\modules\\jsi\\libs\\android.arm64-v8a\\libjsi.so",
+        "C:\\Users\\forso\\.gradle\\caches\\8.10.2\\transforms\\d31f451122629a882eaa4d4e39fe5824\\transformed\\fbjni-0.6.0\\prefab\\modules\\fbjni\\libs\\android.arm64-v8a\\libfbjni.so"
       ]
-    },
-    "react_codegen_RNGoogleSignInCGen::@337b7b353bd94a4215c0": {
-      "artifactName": "react_codegen_RNGoogleSignInCGen",
-      "abi": "arm64-v8a",
-      "runtimeFiles": []
-    },
-    "react_codegen_rnasyncstorage::@1596841e19ec5b9eeffe": {
-      "artifactName": "react_codegen_rnasyncstorage",
-      "abi": "arm64-v8a",
-      "runtimeFiles": []
     }
   }
 }

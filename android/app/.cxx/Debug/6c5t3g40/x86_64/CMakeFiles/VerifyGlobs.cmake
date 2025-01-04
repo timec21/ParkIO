@@ -12,56 +12,6 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   file(TOUCH_NOCREATE "C:/Users/forso/Project/TestIO/android/app/.cxx/Debug/6c5t3g40/x86_64/CMakeFiles/cmake.verify_globs")
 endif()
 
-# react_codegen_SRCS at C:/Users/forso/Project/TestIO/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/forso/Project/TestIO/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/*.cpp")
-set(OLD_GLOB
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/rnasyncstorage-generated.cpp"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "C:/Users/forso/Project/TestIO/android/app/.cxx/Debug/6c5t3g40/x86_64/CMakeFiles/cmake.verify_globs")
-endif()
-
-# react_codegen_SRCS at C:/Users/forso/Project/TestIO/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/forso/Project/TestIO/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/react/renderer/components/rnasyncstorage/*.cpp")
-set(OLD_GLOB
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/react/renderer/components/rnasyncstorage/ComponentDescriptors.cpp"
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/react/renderer/components/rnasyncstorage/EventEmitters.cpp"
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/react/renderer/components/rnasyncstorage/Props.cpp"
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/react/renderer/components/rnasyncstorage/ShadowNodes.cpp"
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/react/renderer/components/rnasyncstorage/States.cpp"
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/react/renderer/components/rnasyncstorage/rnasyncstorageJSI-generated.cpp"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "C:/Users/forso/Project/TestIO/android/app/.cxx/Debug/6c5t3g40/x86_64/CMakeFiles/cmake.verify_globs")
-endif()
-
-# react_codegen_SRCS at C:/Users/forso/Project/TestIO/node_modules/@react-native-google-signin/google-signin/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/forso/Project/TestIO/node_modules/@react-native-google-signin/google-signin/android/build/generated/source/codegen/jni/*.cpp")
-set(OLD_GLOB
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-google-signin/google-signin/android/build/generated/source/codegen/jni/RNGoogleSignInCGen-generated.cpp"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "C:/Users/forso/Project/TestIO/android/app/.cxx/Debug/6c5t3g40/x86_64/CMakeFiles/cmake.verify_globs")
-endif()
-
-# react_codegen_SRCS at C:/Users/forso/Project/TestIO/node_modules/@react-native-google-signin/google-signin/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/forso/Project/TestIO/node_modules/@react-native-google-signin/google-signin/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleSignInCGen/*.cpp")
-set(OLD_GLOB
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-google-signin/google-signin/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleSignInCGen/ComponentDescriptors.cpp"
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-google-signin/google-signin/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleSignInCGen/EventEmitters.cpp"
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-google-signin/google-signin/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleSignInCGen/Props.cpp"
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-google-signin/google-signin/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleSignInCGen/RNGoogleSignInCGenJSI-generated.cpp"
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-google-signin/google-signin/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleSignInCGen/ShadowNodes.cpp"
-  "C:/Users/forso/Project/TestIO/node_modules/@react-native-google-signin/google-signin/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleSignInCGen/States.cpp"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "C:/Users/forso/Project/TestIO/android/app/.cxx/Debug/6c5t3g40/x86_64/CMakeFiles/cmake.verify_globs")
-endif()
-
 # react_codegen_SRCS at C:/Users/forso/Project/TestIO/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/forso/Project/TestIO/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/*.cpp")
 set(OLD_GLOB

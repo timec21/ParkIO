@@ -1,14 +1,20 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 
-interface Park {
+/**
+ * Park arayüzü
+ */
+export interface Favorite {
   id: string;
   name: string;
-  distance: string;
   image: string;
-  description?: string;
-  facilities?: string[];
+  description?: string; // string | undefined olabilir
+  facilities?: string[]; // string[] | undefined olabilir
+  note?: string;
 }
 
+/**
+ * ParkContext arayüzü
+ */
 interface ParkContextType {
   parks: Park[];
   favoriteParks: Park[];
@@ -20,49 +26,99 @@ interface ParkContextType {
 const ParkContext = createContext<ParkContextType | undefined>(undefined);
 
 export const ParkProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [parks] = useState<Park[]>([
-    {
-      id: '1',
-      name: 'Central Park',
-      distance: '1.2 km',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Global_Citizen_Festival_Central_Park_New_York_City_from_NYonAir_%2815351915006%29.jpg/300px-Global_Citizen_Festival_Central_Park_New_York_City_from_NYonAir_%2815351915006%29.jpg',
-      description: 'Central Park is a large urban park in New York City.',
-      facilities: ['Playground', 'Walking Path', 'Cycling Track'],
-    },
-    {
-      id: '2',
-      name: 'Sunnydale Park',
-      distance: '2.5 km',
-      image: 'https://www.pitchup.com/images/1/image/upload/s--OHDpDP1j--/c_limit,h_2400,w_3200/e_improve,fl_progressive/q_auto/b_rgb:000,g_south_west,l_pitchup.com_wordmark_white_watermark,o_15/v1/sunnydale-holiday-park/1036430.jpg',
-      description: 'A peaceful park for relaxation and outdoor activities.',
-      facilities: ['Picnic Area', 'Jogging Path'],
-    },
+  // 1) parks
+  const [parks, setParks] = useState<Park[]>([]);
 
-    {
-        id: '3',
-        name: 'Great Smoky Mountains National Park',
-        distance: '3.5 km',
-        image: 'https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/clients/swaincountync/Oconaluftee_Valley_Overlook_low_rez_for_web_or_social_8f145a91-e25c-4e1d-ba6b-e719fb510523.jpg',
-        description: 'A peaceful park for relaxation and outdoor activities.',
-        facilities: ['Picnic Area', 'Jogging Path'],
-      },
-  ]);
-
+  // 2) favoriteParks
   const [favoriteParks, setFavoriteParks] = useState<Park[]>([]);
 
+  // NPS API endpoint + sorgu parametresi
+  // Burada kendi anahtarını ve istediğin limit'i ekle
+  const API_URL = `https://developer.nps.gov/api/v1/parks?limit=50&api_key=6ON0aNJYGfGuGjhoMwGUzg80gXg95gmpzBjAXGHr`;
+
+  useEffect(() => {
+    const fetchParks = async () => {
+      try {
+        const response = await fetch(API_URL);
+        const jsonData = await response.json();
+
+        // NPS yanıtı şu şekilde geliyor:
+        // {
+        //   data: [ { park verileri... }, ... ],
+        //   total: "...",
+        //   limit: "...",
+        //   start: "...",
+        //   ...
+        // }
+        // O yüzden jsonData.data diyerek asıl diziye ulaşıyoruz
+
+        if (!jsonData.data) {
+          console.error('Beklenmeyen veri yapısı:', jsonData);
+          return;
+        }
+
+        // Bu dizi -> jsonData.data
+        // Şimdi sadece ilk 20'sini gösterelim (isteğe bağlı)
+        const slicedData = jsonData.data.slice(0, 20);
+
+        // NPS'ten gelen her park objesinde
+        // `id`, `fullName`, `latLong`, `description`, `images` vb. alanlar var.
+        // Bizim Park interface'ine göre "distance" alanı orijinalde yok; 
+        // istersen oraya bir sabit string ya da başka bir veriyi koyabilirsin.
+        const formattedParks: Park[] = slicedData.map((item: any) => ({
+          // Örnek mapping: 
+          // NPS'te item.id => parkın Unique ID'si, item.fullName => Adı, 
+          // item.images[0].url => görsel vs.
+          id: String(item.id || Math.random()), 
+          name: item.fullName || 'No Name',
+          distance: 'N/A', // NPS verisinde "distance" yok, buraya sabit değer koyabiliriz
+          image: (item.images && item.images.length > 0) ? item.images[0].url : '',
+          description: item.description ?? '',
+          // facilities'leri NPS verisinde "activities" veya "topics" alanlarından toplayabilirsin.
+          facilities: item.activities?.map((act: any) => act.name) ?? [],
+        }));
+
+        setParks(formattedParks);
+      } catch (error) {
+        console.error('Park verisi çekilirken hata:', error);
+      }
+    };
+
+    fetchParks();
+  }, []);
+
+  /**
+   * Favori ekleme
+   */
   const addFavorite = (park: Park) => {
-    setFavoriteParks((prev) => [...prev, park]);
+    setFavoriteParks((prevFavorites) => [...prevFavorites, park]);
   };
 
+  /**
+   * Favoriden çıkarma
+   */
   const removeFavorite = (parkId: string) => {
-    setFavoriteParks((prev) => prev.filter((park) => park.id !== parkId));
+    setFavoriteParks((prevFavorites) =>
+      prevFavorites.filter((park) => park.id !== parkId)
+    );
   };
 
-  const getParkDetails = (parkId: string) => parks.find((park) => park.id === parkId);
+  /**
+   * Tek park detayı
+   */
+  const getParkDetails = (parkId: string) => {
+    return parks.find((park) => park.id === parkId);
+  };
 
   return (
     <ParkContext.Provider
-      value={{ parks, favoriteParks, addFavorite, removeFavorite, getParkDetails }}
+      value={{
+        parks,
+        favoriteParks,
+        addFavorite,
+        removeFavorite,
+        getParkDetails,
+      }}
     >
       {children}
     </ParkContext.Provider>
