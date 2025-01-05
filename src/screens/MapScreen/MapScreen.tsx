@@ -3,93 +3,57 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  ActivityIndicator,
   Alert,
   Text,
 } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import axios from 'axios';
-
+import { getCurrentLocation } from '../../services/locationService';
+import { startAccelerometer, stopAccelerometer } from '../../services/motionService';
 interface Park {
   id: string;
-  name: string;       
-  image: string;      
-  latitude: number;   
-  longitude: number;  
-  feature1: string;   
-  feature2: string;   
+  name: string;
+  latitude: number;
+  longitude: number;
 }
 
 const MapScreen: React.FC = () => {
-  const [parks, setParks] = useState<Park[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [currentLocation, setCurrentLocation] = useState<{ latitude: number; longitude: number } | null>(null);
+  const [nearbyParks, setNearbyParks] = useState<Park[]>([]);
+  const [movement, setMovement] = useState<{ x: number; y: number; z: number } | null>(null);
+  let accelerometerSubscription: { remove: () => void } | null = null;
 
   useEffect(() => {
-    const fetchParks = async () => {
+    const fetchLocation = async () => {
       try {
-        const response = await axios.get('https://developer.nps.gov/api/v1/parks', {
-          params: {
-            limit: '30', 
-            api_key: '6ON0aNJYGfGuGjhoMwGUzg80gXg95gmpzBjAXGHr', 
-          },
-        });
+        const location = await getCurrentLocation();
+        setCurrentLocation(location);
 
-        const rawData = response.data.data || [];
-
-        const filteredParks: Park[] = rawData
-          .map((parkItem: any) => {
-            // latLong: "lat:37.5858662, long:-85.67330523"
-            let lat = 0;
-            let long = 0;
-            if (parkItem.latLong) {
-              const [latStr, longStr] = parkItem.latLong
-                .replace('lat:', '')
-                .replace('long:', '')
-                .split(', ');
-              lat = parseFloat(latStr);
-              long = parseFloat(longStr);
-            }
-
-            return {
-              id: parkItem.id,
-              name: parkItem.fullName,
-              image:
-                parkItem.images && parkItem.images.length > 0
-                  ? parkItem.images[0].url
-                  : '',
-              latitude: lat,
-              longitude: long,
-              feature1: parkItem.description, // Örnek olarak description
-              feature2: parkItem.designation, // Ya da states / topics / vb.
-            };
-          })
-          // Koordinatı olmayanları (latitude, longitude) hariç tutmak istersen:
-          .filter((park:any) => !!park.latitude && !!park.longitude);
-
-        setParks(filteredParks);
+        // Simülasyon: Yakındaki parkları filtrele
+        const parks: Park[] = [
+          { id: '1', name: 'Park 1', latitude: location.latitude + 0.01, longitude: location.longitude + 0.01 },
+          { id: '2', name: 'Park 2', latitude: location.latitude - 0.01, longitude: location.longitude - 0.01 },
+        ];
+        setNearbyParks(parks);
       } catch (error) {
-        console.error('Error fetching park data:', error);
-        Alert.alert('Hata', 'Park verileri alınamadı.');
-      } finally {
-        setLoading(false);
+        Alert.alert('Hata', 'Konum alınamadı.');
       }
     };
 
-    fetchParks();
+    fetchLocation();
+
+    accelerometerSubscription = startAccelerometer((data) => {
+      setMovement(data);
+    });
+
+    return () => {
+      stopAccelerometer(accelerometerSubscription!);
+    };
   }, []);
 
-  if (loading) {
+  if (!currentLocation) {
     return (
       <View style={styles.loaderContainer}>
-        <ActivityIndicator size="large" color="#EA80FC" />
-      </View>
-    );
-  }
-
-  if (!loading && parks.length === 0) {
-    return (
-      <View style={styles.loaderContainer}>
-        <Text>Gösterilecek park bulunamadı.</Text>
+        <Text>Konum alınıyor...</Text>
       </View>
     );
   }
@@ -97,16 +61,16 @@ const MapScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <MapView
-        provider={PROVIDER_GOOGLE} // <-- Google Maps için
+        provider={PROVIDER_GOOGLE}
         style={styles.map}
         initialRegion={{
-          latitude: parks[0]?.latitude || 37.7749,
-          longitude: parks[0]?.longitude || -119.4194,
-          latitudeDelta: 10,
-          longitudeDelta: 10,
+          latitude: currentLocation.latitude,
+          longitude: currentLocation.longitude,
+          latitudeDelta: 0.05,
+          longitudeDelta: 0.05,
         }}
       >
-        {parks.map((park) => (
+        {nearbyParks.map((park) => (
           <Marker
             key={park.id}
             coordinate={{
@@ -114,16 +78,18 @@ const MapScreen: React.FC = () => {
               longitude: park.longitude,
             }}
             title={park.name}
-            // description içerisinde feature1 & feature2 gibi bilgileri gösterebilirsin
-            description={`${park.feature1}\n${park.feature2}`}
           />
         ))}
       </MapView>
+
+      {movement && (
+        <View style={styles.movementContainer}>
+          <Text>Hareket: X={movement.x.toFixed(2)}, Y={movement.y.toFixed(2)}, Z={movement.z.toFixed(2)}</Text>
+        </View>
+      )}
     </View>
   );
 };
-
-export default MapScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -138,4 +104,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  movementContainer: {
+    position: 'absolute',
+    bottom: 10,
+    left: 10,
+    padding: 10,
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    borderRadius: 5,
+  },
 });
+
+export default MapScreen;

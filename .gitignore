@@ -28,7 +28,7 @@ android/app/build/intermediates/cxx/
 
 # Metro
 .metro-health-check*
-
+/android
 # debug
 npm-debug.*
 yarn-debug.*
