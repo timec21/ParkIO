@@ -6,16 +6,12 @@ import { addFavoriteToAPI, Favorite } from '../../services/api';
 import { useParkContext } from '../../ParkContext'; // <--- Önemli
 
 const DetailsScreen = ({ route, navigation }: any) => {
-  // route.params içinden yalnızca parkId çekiyoruz
   const { parkId } = route.params;
 
-  // ParkContext'teki getParkDetails fonksiyonunu al
   const { getParkDetails } = useParkContext();
 
-  // "parkId"ye göre park nesnesini bul
   const park = getParkDetails(parkId);
 
-  // Park bulunamadıysa (id eşleşmiyorsa) bir mesaj göster
   if (!park) {
     return (
       <View style={styles.container}>
@@ -27,11 +23,9 @@ const DetailsScreen = ({ route, navigation }: any) => {
     );
   }
 
-  // Artık park.name, park.image, park.description, park.facilities gibi alanları kullanabilirsin
   const [note, setNote] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
 
-  // Favorilere ekleme
   const handleAddFavorite = async () => {
     const favorite: Favorite = {
       id: park.id,
@@ -53,7 +47,6 @@ const DetailsScreen = ({ route, navigation }: any) => {
     }
   };
 
-  // Resmi indirme
   const handleDownloadImage = async () => {
     try {
       const fileUri = `${FileSystem.documentDirectory}${park.name.replace(/\s/g, '_')}.jpg`;

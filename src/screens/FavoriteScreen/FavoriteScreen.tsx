@@ -8,7 +8,6 @@ const FavoriteScreen = () => {
   const [loading, setLoading] = useState<boolean>(true); // Yükleme durumu
   const [error, setError] = useState<string | null>(null); // Hata mesajı
 
-  // Favorileri yükle
   useEffect(() => {
     loadFavorites();
   }, []);

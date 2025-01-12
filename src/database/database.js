@@ -7,6 +7,8 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
+
+
 const db = new sqlite3.Database('favorites.db', (err) => {
   if (err) {
     console.error('Error connecting to SQLite database:', err);
